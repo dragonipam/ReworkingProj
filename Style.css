@@ -1,0 +1,338 @@
+/*правило для элементов main*/
+main {
+    margin-left: 30px;
+    margin-right: 30px;
+    background: linear-gradient(112deg, #ffffff 50%, rgb(14,172,208) 50%);
+}
+/*правило для элементов относящихся к классу a_footer*/
+.a_footer {
+    display: block;
+}
+h1 {
+    text-align: center;
+    padding: 20px 10px 0px 0px;
+}
+h2{
+    text-align: center;
+}
+p {
+    font-size: 16px;
+    text-align: center;
+}
+.p_carousel{
+    font-size: 32px;
+}
+.image-caption{
+  font-size: 64px;
+  line-height: 1px;
+  color: rgb(014,172,208);
+}
+.image-caption-bold{
+  font-size: 64px;
+  line-height: 1px;
+  font-weight: bold;
+}
+section {
+    margin-bottom: 100px;
+}
+hr{
+    size: 1px;
+}
+.image{
+    text-align: left;
+    width: 350px;
+    height: 100px;
+}
+.image_logo{
+    float: left;
+    /*padding-left: 10px;*/
+    width: 200px;
+    height: 200px;
+}
+/*подключаем картинку для шапки*/
+header {
+    background: url('https://d626yq9e83zk1.cloudfront.net/files/2017/12/26-770x425.jpg') bottom center no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .image_logo{
+        float: left;
+        /*padding-left: 10px;*/
+        width: 10%;
+        height: 10%;
+    }
+}
+adress {
+    text-align: center;
+}
+.flex__ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}   
+.flex__item{
+    flex-basis: 180px;
+    flex-grow: 0;
+    margin-right: 10px;
+    font-size: 20px;
+}
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+@media (max-width: 350px) {
+    header{
+        visibility: hidden;
+    }
+    body{
+        font-size: 50px;
+    }
+    adress{
+        font-size: 25px;
+    }
+    p{
+        font-size: 100%;
+    }
+    main {
+        margin-left: 1%;
+        margin-right: 100%;
+        background: linear-gradient(100%, #ffffff 50%, rgb(14,172,208) 50%);
+    }
+    .flex__item{
+        flex-basis: 180px;
+        flex-grow: 0;
+        margin-right: 10px;
+        font-size: 100%;
+    }
+}
+/**/
+@keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -300%;
+  }
+  98% {
+    left: -300%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+* {
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent; /* thumb and track color */
+  scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+  position: relative;
+  padding-top: 75%;
+  filter: drop-shadow(0 0 10px #0003);
+  perspective: 100px;
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 50px;
+  height: 650px;
+  background-color: rgb(255, 255, 255);
+  counter-increment: item;
+  text-align: center;
+}
+
+.carousel__slide:nth-child(even) {
+  background-color: rgb(255, 255, 255);
+}
+
+.carousel__slide:before {
+  content: counter(item);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-40%,70px);
+  color: #fff;
+  font-size: 2em;
+}
+
+.carousel__snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
+
+@media (hover: hover) {
+  .carousel__snapper {
+    animation-name: tonext, snap;
+    animation-timing-function: ease;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+
+  .carousel__slide:last-child .carousel__snapper {
+    animation-name: tostart, snap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__snapper {
+    animation-name: none;
+  }
+}
+
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  animation-name: none;
+}
+
+.carousel__navigation {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.carousel__navigation-list,
+.carousel__navigation-item {
+  display: inline-block;
+}
+
+.carousel__navigation-button {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #333;
+  background-clip: content-box;
+  border: 0.25rem solid transparent;
+  border-radius: 50%;
+  font-size: 0;
+  transition: transform 0.1s;
+}
+
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 0;
+  margin-top: 37.5%;
+  width: 4rem;
+  height: 4rem;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  font-size: 0;
+  outline: 0;
+}
+
+.carousel::before,
+.carousel__prev {
+  left: -1rem;
+}
+
+.carousel::after,
+.carousel__next {
+  right: -1rem;
+}
+
+.carousel::before,
+.carousel::after {
+  content: '';
+  z-index: 1;
+  background-color: #333;
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.carousel::after {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.carousel_image{
+    float: left;
+    border: 3px solid #00a8e1;
+}
