@@ -74,6 +74,11 @@ adress {
     flex-wrap: wrap;
     flex-direction: row;
 }   
+.flex__ol{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}   
 .flex__item{
     flex-basis: 180px;
     flex-grow: 0;
@@ -184,7 +189,7 @@ ol, li {
 
 .carousel {
   position: relative;
-  padding-top: 75%;
+  padding-top: 700px;
   filter: drop-shadow(0 0 10px #0003);
   perspective: 100px;
 }
